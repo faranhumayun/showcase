@@ -2,7 +2,11 @@ import React from 'react'
 
 const CustomFilter = () => {
   return (
-    <div>CustomFilter</div>
+    <div>
+      <h2>
+        Custom Filter <br />here
+      </h2>
+    </div>
   )
 }
 
