@@ -31,7 +31,7 @@ const SearchManufacturer = ({
 
   return (
     <div className="search-manufacturer">
-      <Combobox value={manufacturer} onChange={setManufacturer}>
+      <Combobox>
         <div className="relative w-full">
           <ComboboxButton className="absolute top-[14px]">
             <Image
@@ -59,7 +59,13 @@ const SearchManufacturer = ({
           >
             <ComboboxOptions>
               {filteredManufacturers.map((item) => (
-                item
+                <ComboboxOption
+                  key={item}
+                  value={item}
+                  className="data-[focus]:bg-blue-100"
+                >
+                  {item}
+                </ComboboxOption>
               ))}
             </ComboboxOptions>
           </Transition>
