@@ -59,7 +59,13 @@ const SearchManufacturer = ({
           >
             <ComboboxOptions>
               {filteredManufacturers.map((item) => (
-                item
+                <ComboboxOption
+                  key={item}
+                  value={item}
+                  className="data-[focus]:bg-blue-100"
+                >
+                  {item}
+                </ComboboxOption>
               ))}
             </ComboboxOptions>
           </Transition>
