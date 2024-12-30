@@ -1,7 +1,10 @@
 import { CustomFilter, Hero, SearchBar } from '@/components'
-import Image from 'next/image'
+import { fetchCars } from '@/utils'
 
-export default function Home() {
+export default async function Home() {
+  const allCars:[{model:string,class:string,drive:string}] = await fetchCars()
+  console.log(allCars)
+  
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -20,6 +23,18 @@ export default function Home() {
             <CustomFilter title="year" />
           </div>
         </div>
+        <div className='flex flex-wrap gap-5 items-center justify-center w-2/3 flex-shrink-0 flex-grow'>
+        {
+          allCars.map((item) => (
+            <div className='h-52 w-52 bg-[#f9f9f9]'>
+              <p>{item.model}</p>
+              <p>{item.class}</p>
+              <p>{item.drive}</p>
+            </div>
+          ))
+        }
+        </div>
+
       </div>
     </main>
   )
