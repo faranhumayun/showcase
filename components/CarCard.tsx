@@ -29,6 +29,10 @@ const CarCard = ({ car }: CarCardProps) => {
       <div className="relative w-full h-40 my-3 object-contain">
         <Image src={heroImg} alt="car image" width={800} height={400} className="object-contain w-full h-auto" />
       </div>
+
+      <div className="relative flex w-full mt-2">
+        
+      </div>
     </div>
   );
 };
