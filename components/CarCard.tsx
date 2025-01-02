@@ -5,6 +5,7 @@ import Image from "next/image";
 import { calculateCarRent } from "@/utils";
 import heroImg from "@/public/hero.png";
 import CustomButton from "./CustomButton";
+import CarDetails from "./CarDetails";
 
 interface CarCardProps {
   car: CarProps;
@@ -14,7 +15,7 @@ const CarCard = ({ car }: CarCardProps) => {
   const { city_mpg, drive, make, model, transmission, year } = car;
 
   const [isOpen, setIsOpen] = useState(false)
-  
+
   const carRent = calculateCarRent(city_mpg, year);
   return (
     <div className="car-card group">
@@ -72,6 +73,7 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
+      <CarDetails />
     </div>
   );
 };
