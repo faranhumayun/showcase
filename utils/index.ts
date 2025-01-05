@@ -1,6 +1,6 @@
 export async function fetchCars() {
   const urlLink =
-    "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla";
+    "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=carrera";
   const headers = {
     "X-RapidApi-Key": "x-x-x-x",
     "X-RapidApi-Host": "cars-by-api-ninjas.p.rapidapi.com",
