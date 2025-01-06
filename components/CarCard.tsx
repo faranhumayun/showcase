@@ -2,8 +2,7 @@
 import { useState } from "react";
 import { CarProps } from "@/types";
 import Image from "next/image";
-import { calculateCarRent } from "@/utils";
-import heroImg from "@/public/hero.png";
+import { calculateCarRent, generateCarImageURL } from "@/utils";
 import CustomButton from "./CustomButton";
 import CarDetails from "./CarDetails";
 
@@ -33,7 +32,7 @@ const CarCard = ({ car }: CarCardProps) => {
 
       <div className="relative w-full h-40 my-3 object-contain">
         <Image
-          src={heroImg}
+          src={generateCarImageURL(car)}
           alt="car image"
           width={800}
           height={400}

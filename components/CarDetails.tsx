@@ -1,15 +1,12 @@
 import { CarProps } from "@/types";
 import React, { Fragment } from "react";
 import {
-  Description,
   Dialog,
   DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-  Transition,
-  TransitionChild,
+  DialogPanel
 } from "@headlessui/react";
 import Image from "next/image";
+import { generateCarImageURL } from "@/utils";
 
 interface CarDetailsProps {
   isOpen: boolean;
@@ -47,7 +44,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
             <div className="flex-1 flex-col gap-3">
               <div className="relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg">
                 <Image
-                  src="/hero.png"
+                  src={generateCarImageURL(car)}
                   alt="car modal"
                   fill
                   priority
@@ -57,7 +54,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
               <div className="flex gap-3">
                 <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                   <Image
-                    src="/hero.png"
+                    src={generateCarImageURL(car, "29")}
                     alt="car modal"
                     fill
                     priority
@@ -66,7 +63,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                 </div>
                 <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                   <Image
-                    src="/hero.png"
+                    src={generateCarImageURL(car, "33")}
                     alt="car modal"
                     fill
                     priority
@@ -75,7 +72,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                 </div>
                 <div className="flex-1 relative w-full h-24 bg-primary-blue-100 rounded-lg">
                   <Image
-                    src="/hero.png"
+                    src={generateCarImageURL(car, "13")}
                     alt="car modal"
                     fill
                     priority
@@ -89,7 +86,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                 {car.make} {car.model}
               </h2>
               <div className="mt-3 flex flex-wrap gap-4">
-                {Object.keys(car).map((key, value) => (
+                {Object.entries(car).map(([key, value]) => (
                   <div
                     key={key}
                     className="flex justify-between gap-5 w-full text-right"
@@ -97,7 +94,7 @@ const CarDetails = ({ isOpen, closeModal, car }: CarDetailsProps) => {
                     <h4 className="text-grey capitalize">
                       {key.split("_").join(" ")}
                     </h4>
-                    <p className="text-black-100 font-semibold">{value}</p>
+                    <p className="text-black-100 font-semibold capitalize">{value}</p>
                   </div>
                 ))}
               </div>
