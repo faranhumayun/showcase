@@ -5,11 +5,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "cdn.imagin.studio",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
+      }
     ],
   },
 };
