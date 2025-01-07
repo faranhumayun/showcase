@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { SearchManufacturer } from ".";
 import Image from "next/image";
 
@@ -19,7 +19,16 @@ const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState("");
   const [model, setModel] = useState("");
 
-  const handleSearch = () => {};
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if(manufacturer === "" && model === "") {
+      return alert("Please fill in the search bar")
+    }
+  };
+  const updateSearchParams = (manufacturer: string, model: string) => {
+    const searchParams = new URLSearchParams(window.location.search)
+  }
 
   return (
     <form className="searchbar" onSubmit={handleSearch}>
@@ -40,7 +49,15 @@ const SearchBar = () => {
           height={25}
           className="absolute w-5 h-5 ml-4"
         />
-        
+        <input
+          type="text"
+          name="model"
+          value={model}
+          onChange={(e) => setModel(e.target.value)}
+          placeholder="Tiguan"
+          className="searchbar__input"
+        />
+        <SearchButton otherClasses="sm:hidden" />
       </div>
       <SearchButton otherClasses="max-sm:hidden" />
     </form>
