@@ -1,7 +1,9 @@
 "use client";
-import React, { SyntheticEvent, useState } from "react";
-import { SearchManufacturer } from ".";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
+
+import { SearchManufacturer } from ".";
 
 const SearchButton = ({ otherClasses }: { otherClasses: string }) => (
   <button type="submit" className={`-ml-3 z-10 ${otherClasses}`}>
@@ -19,16 +21,33 @@ const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState("");
   const [model, setModel] = useState("");
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
+  const router = useRouter();
 
-    if(manufacturer === "" && model === "") {
-      return alert("Please fill in the search bar")
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (manufacturer === "" && model === "") {
+      return alert("Please fill in the search bar");
     }
+    updateSearchParams(manufacturer, model);
   };
   const updateSearchParams = (manufacturer: string, model: string) => {
-    const searchParams = new URLSearchParams(window.location.search)
-  }
+    const searchParams = new URLSearchParams(window.location.search);
+    if (model) {
+      searchParams.set("model", model);
+    } else {
+      searchParams.delete("model");
+    }
+
+    if (manufacturer) {
+      searchParams.set("manufacturer", manufacturer);
+    } else {
+      searchParams.delete("manufacturer");
+    }
+
+    const newPathName = `${window.location.pathname}?${searchParams.toString()}`
+    router.push(newPathName);
+  };
 
   return (
     <form className="searchbar" onSubmit={handleSearch}>
