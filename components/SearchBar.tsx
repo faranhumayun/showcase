@@ -23,13 +23,13 @@ const SearchBar = () => {
 
   const router = useRouter();
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (manufacturer === "" && model === "") {
       return alert("Please fill in the search bar");
     }
-    updateSearchParams(manufacturer, model);
+    updateSearchParams(manufacturer.toLowerCase(), model.toLowerCase());
   };
   const updateSearchParams = (manufacturer: string, model: string) => {
     const searchParams = new URLSearchParams(window.location.search);
