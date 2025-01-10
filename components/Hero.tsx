@@ -27,7 +27,12 @@ const Hero = () => {
 
       <div className="hero__image-container">
         <div className="hero__image">
-          <Image src="/.png" alt="hero" fill className="object-contain" />
+          <Image
+            src="https://cdn.imagin.studio/getimage?make=bmw"
+            alt="hero"
+            fill
+            className="object-contain"
+          />
         </div>
         <div className="hero__image-overlay"></div>
       </div>
