@@ -39,10 +39,15 @@ export interface FilterProps {
 }
 
 export interface OptionsProps {
-  title: string
-  value: string
+  title: string;
+  value: string;
 }
 export interface CustomFilterProps {
-  title: string
-  options: OptionsProps[]
+  title: string;
+  options: OptionsProps[];
+}
+
+export interface ShowMoreProps {
+  pageNumber: number;
+  isNext: boolean;
 }
