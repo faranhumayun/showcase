@@ -1,39 +1,22 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fuels, yearsOfProduction } from "@/constants";
 import { FilterProps } from "@/types";
 import { fetchCars } from "@/utils";
 
-export default function Home() {
-  const [allCars, setAllCars] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const [manufacturer, setManufacturer] = useState("");
-  const [model, setModel] = useState("");
-
-  const [fuel, setFuel] = useState("");
-  const [year, setYear] = useState(2022);
-
-  const [limit, setLimit] = useState(10);
-
-  const getCars = async () => {
-    const allCars = await fetchCars({
-      manufacturer: manufacturer || "",
-      year: year,
-      fuel: fuel || "",
-      limit: limit || 10,
-      model: model || "",
-    });
-    console.log(allCars);
-  };
-
-  useEffect(() => {
-    getCars();
-  }, [manufacturer, model, fuel, year, limit]);
-
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: FilterProps;
+}) {
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer || "",
+    year: searchParams.year,
+    fuel: searchParams.fuel || "",
+    limit: searchParams.limit || 10,
+    model: searchParams.model || "",
+  });
   console.log(allCars);
+  console.log(searchParams.limit);
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (

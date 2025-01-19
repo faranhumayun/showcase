@@ -4,7 +4,7 @@ export async function fetchCars(filters: FilterProps) {
   const { manufacturer, year, fuel, model } = filters;
   const urlLink = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&fuel_type=${fuel}&model=${model}`;
   const headers = {
-    "X-RapidApi-Key": "KJwZZIJSFimshuivMSVGaiYzkrOMP15f2vKjsnK4bKzuUzVLzA",
+    "X-RapidApi-Key": "x-x-x-x",
     "X-RapidApi-Host": "cars-by-api-ninjas.p.rapidapi.com",
   };
 

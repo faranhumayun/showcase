@@ -6,13 +6,10 @@ import CustomButton from "./CustomButton";
 import { updateSearchParams } from "@/utils";
 
 const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
-    console.log("first", pageNumber)
   const router = useRouter();
   const handleNavigation = () => {
-    const newLimit = (pageNumber + 1) * 10
-    const newPath = updateSearchParams("limit", `${newLimit}`);
-
-    console.log(newPath);
+    const newLimit = ((pageNumber + 1) * 10).toString();
+    const newPath = updateSearchParams("limit", newLimit);
     router.push(newPath);
   };
   return (
