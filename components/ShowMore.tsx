@@ -8,8 +8,8 @@ import { updateSearchParams } from "@/utils";
 const ShowMore = ({ pageNumber, isNext }: ShowMoreProps) => {
   const router = useRouter();
   const handleNavigation = () => {
-    const newLimit = ((pageNumber + 1) * 10).toString();
-    const newPath = updateSearchParams("limit", newLimit);
+    const newLimit = (pageNumber + 1) * 10;
+    const newPath = updateSearchParams("limit", `${newLimit}`);
     router.push(newPath);
   };
   return (
