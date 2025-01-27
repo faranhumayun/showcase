@@ -12,11 +12,9 @@ export default async function Home({
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year,
     fuel: searchParams.fuel || "",
-    limit: searchParams.limit || 10,
+    // limit: searchParams.limit || 10,
     model: searchParams.model || "",
   });
-  // console.log(allCars);
-  // console.log(searchParams.limit);
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
 
   return (
